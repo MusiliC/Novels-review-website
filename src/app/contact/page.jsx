@@ -18,12 +18,12 @@ const page = () => {
             <input
               type="text"
               placeholder="Name"
-              className="p-3 outline-none bg-transparent border border-primary-100 rounded-md"
+              className="p-3 text-sm outline-none bg-transparent border border-primary-100 rounded-md"
             />
             <input
               type="text"
               placeholder="Email"
-              className="p-3 outline-none bg-transparent border border-primary-100 rounded-md"
+              className="p-3 text-sm outline-none bg-transparent border border-primary-100 rounded-md"
             />
             <textarea
               name=""
@@ -31,7 +31,7 @@ const page = () => {
               id=""
               cols="30"
               rows="5"
-              className="p-3 outline-none bg-transparent border border-primary-100 rounded-md"
+              className="p-3 text-sm outline-none bg-transparent border border-primary-100 rounded-md"
             ></textarea>
             <Button text={"Send"} url={"#"} />
           </form>

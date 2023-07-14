@@ -25,7 +25,7 @@ const Navbar = () => {
     <section className="w-full">
       <div className="flex justify-between items-center h-[80px] w-5/6 mx-auto">
         <Link href={"/"} className="font-bold tracking-widest text-lg">
-          Musili
+          C-Tech
         </Link>
 
         {/* large screens */}
@@ -56,7 +56,7 @@ const Navbar = () => {
           </div>
 
           {toggleMenu ? null : (
-            <div className="p-6  absolute top-15 right-0 mx-4 my-2 min-w-[140px] rounded-xl w-1/2 bg-yellow-200 ">
+            <div className="p-6  absolute z-10 top-15 right-0 mx-4 my-2 min-w-[140px] rounded-xl w-1/2  bg-yellow-200 ">
               {/* links in phone */}
               <div className="flex flex-col  items-center justify-end flex-1 list-none">
                 {links.map((link) => (

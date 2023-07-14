@@ -14,7 +14,7 @@ const Footer = () => {
     <section className="w-full bg-primary-100 py-10">
       <div className="w-5/6 pb-5 mx-auto gap-y-7 flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between">
         <div>
-          <p className="text-gray-100 "> Book Website</p>
+          <p className="text-gray-100 ">C-Tech Book Website</p>
         </div>
         <div className="flex flex-col gap-2 text-gray-100">
           <h2 className="">Useful Links</h2>

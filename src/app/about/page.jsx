@@ -4,12 +4,12 @@ import aboutImage from "/public/3.jpg";
 
 const page = () => {
   return (
-    <section className="w-full">
+    <section className="w-full ">
       {/* upper section */}
       <div className=" relative w-full   h-[300px]">
         <Image
           src={aboutImage}
-          className="h-full w-full grayscale-[80%] object-cover"
+          className="h-full w-full grayscale-[60%] object-cover"
           alt="about"
         />
 
