@@ -4,7 +4,7 @@ import aboutImage from "/public/3.jpg";
 
 const page = () => {
   return (
-    <section className="w-full ">
+    <section className="w-full md:min-h-[70vh]">
       {/* upper section */}
       <div className=" relative w-full   h-[300px]">
         <Image
@@ -23,7 +23,9 @@ const page = () => {
       <div className="w-5/6 mx-auto pt-10 pb-16 flex flex-col gap-8 md:gap-[100px] md:flex-row">
         {/* item 1 */}
         <div className="flex-1 justify-start items-center text-justify">
-          <h1 className="my-2 text-base md:text-lg font-semibold">Who we are</h1>
+          <h1 className="my-2 text-base md:text-lg font-semibold">
+            Who we are
+          </h1>
           <p className="text-sm leading-[30px]">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo dolor
             repellendus pariatur! Eos, eum, quo itaque labore assumenda deleniti
@@ -34,7 +36,9 @@ const page = () => {
 
         {/* item 2 */}
         <div className="flex-1 justify-start items-center text-justify">
-          <h1 className="my-2 text-base md:text-lg font-semibold">What we do</h1>
+          <h1 className="my-2 text-base md:text-lg font-semibold">
+            What we do
+          </h1>
           <p className="text-sm leading-[30px]">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo dolor
             repellendus pariatur! Eos, eum, quo itaque labore assumenda deleniti

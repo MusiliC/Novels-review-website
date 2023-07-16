@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const page = () => {
   return (
-    <section className="min-h-[80vh] flex flex-col items-center justify-center">
+    <section className="min-h-[70vh] flex flex-col items-center justify-center">
       <div className="p-10 border w-[90%] md:w-[450px] border-gray-200">
         <div className="p-3 flex w-full items-center justify-center border  border-gray-400 rounded-md">
           <p className="text-lg flex justify-center items-center gap-2"> <FcGoogle size={30} /> Google</p>
