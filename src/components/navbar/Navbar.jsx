@@ -4,6 +4,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { TbLetterX } from "react-icons/tb";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 
 const links = [
   { id: 1, title: "Home", url: "/" },
@@ -17,16 +19,38 @@ const links = [
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
 
+  const { data: session } = useSession();
+
   const handleMenuClick = () => {
     setToggleMenu((prev) => !prev);
   };
 
+  let userProfile = session?.user.name.charAt(0).toUpperCase();
+
   return (
     <section className="w-full">
-      <div className="flex justify-between items-center h-[80px] w-5/6 mx-auto">
+      <div className="flex justify-between items-center h-[80px] w-[90%] mx-auto">
         <Link href={"/"} className="font-bold tracking-widest text-lg">
           C-Tech
         </Link>
+
+        {session?.user && (
+          <div className=" h-[45px] rounded-full w-[45px] p-1">
+            {session.user.image ? (
+              <Image
+                src={session.user.image}
+                alt="U"
+                className="rounded-full"
+                width={45}
+                height={45}
+              />
+            ) : (
+              <div className="bg-yellow-200 w-full h-full rounded-full flex justify-center items-center">
+                <p className="font-semibold md:text-lg">{userProfile}</p>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* large screens */}
 
@@ -37,9 +61,22 @@ const Navbar = () => {
             </Link>
           ))}
 
-          <button className="px-3.5 cursor-pointer border-none py-2 bg-primary-100 text-gray-100 rounded-2xl">
-            Logout
-          </button>
+          {session?.user ? (
+            <button
+              onClick={signOut}
+              className="px-3.5 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link
+              type="button"
+              className="px-3.5 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
+              href="/dashboard/login"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
 
         {/* icon */}
@@ -70,9 +107,24 @@ const Navbar = () => {
                   </Link>
                 ))}
 
-                <button className="px-3.5 cursor-pointer mt-3 border-none py-2 bg-primary-100 text-gray-100 rounded-2xl">
-                  Logout
-                </button>
+                {session?.user ? (
+                  <button
+                    className="px-3.5 mt-3 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
+                    onClick={signOut}
+                  >
+                    Sign Out
+                  </button>
+                ) : (
+                  <>
+                    <Link
+                      type="button"
+                      className="px-3.5 mt-3 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
+                      href="/dashboard/login"
+                    >
+                      Sign In
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           )}
