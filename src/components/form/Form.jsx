@@ -4,13 +4,6 @@ import React from "react";
 const Form = ({ book, setBook,image, submitting, handleSubmit }) => {
   return (
     <form action="" onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <input
-        type="text"
-        placeholder="Book title"
-        value={book.title}
-        onChange={(e) => setBook({ ...book, title: e.target.value })}
-        className="p-3 outline-none bg-transparent border border-primary-100 rounded-md"
-      />
       <label htmlFor="">
         <span className="text-sm">Book Image cover picture</span>
         <input
@@ -18,6 +11,13 @@ const Form = ({ book, setBook,image, submitting, handleSubmit }) => {
           className="p-3 text-sm outline-none w-full bg-transparent border border-primary-100 rounded-md"
         />
       </label>
+      <input
+        type="text"
+        placeholder="Book title"
+        value={book.title}
+        onChange={(e) => setBook({ ...book, title: e.target.value })}
+        className="p-3 outline-none bg-transparent border border-primary-100 rounded-md"
+      />
       <textarea
         name=""
         value={book.information}

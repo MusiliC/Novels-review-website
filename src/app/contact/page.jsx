@@ -8,7 +8,7 @@ const page = () => {
     <section className="w-full md:min-h-[70vh] py-10 md:py-20">
       <div className="w-5/6 mx-auto gap-10 md:gap-20 flex flex-col md:flex-row items-center">
         <div className="flex-1">
-          <Image src={contact} alt="Contact" className="h-[300px] md:h-[400px]" />
+          <Image src={contact} alt="Contact" className="h-[250px] md:h-[350px]" />
         </div>
         <div className="flex-1 ">
           <div className="mb-5">
