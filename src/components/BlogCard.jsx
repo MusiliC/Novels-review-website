@@ -6,7 +6,7 @@ import benCarson from "public/2.jpg";
 const BlogCard = ({ blog }) => {
   return (
     <Link href={`/blogs/${blog._id}`}>
-      <div className="flex flex-col md:flex-row md:items-center gap-4 border-t border-b cursor-pointer hover:bg-gray-300  py-5 border-gray-300 md:gap-[30px] lg:gap-[70px]">
+      <div className="flex flex-col md:flex-row md:items-center gap-4 border-t border-b cursor-pointer  py-5 border-gray-300 md:gap-[30px] lg:gap-[70px]">
         <div className="md:w-[40%] px-2 lg:w-[30%] flex justify-center">
           <Image
             src={blog.image ? blog.image : benCarson}
@@ -43,7 +43,7 @@ const BlogCard = ({ blog }) => {
 
             {/* title */}
             <div className="my-2">
-              <p className="font-semibold md:text-lg tracking-wider">
+              <p className="font-semibold tracking-wider">
                 {blog.title}
               </p>
             </div>

@@ -9,7 +9,6 @@ const page = () => {
   const {id} = useParams()
 
 
-
   return (
     <section className="w-full md:min-h-[70vh]">
       <div className="w-5/6 lg:w-4/6 mx-auto py-14 md:py-8 md:pb-14">

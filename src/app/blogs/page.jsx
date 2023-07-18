@@ -27,7 +27,6 @@ const page = () => {
     fetchBlogs();
   }, []);
 
-  console.log(blogs);
 
   return (
     <section className="w-full pt-5 md:min-h-[70vh] pb-16">

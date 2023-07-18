@@ -1,40 +1,54 @@
 "use client";
 import Button from "@/components/button/Button";
-import Image from "next/image";
-import novelImage from "/public/2.jpg";
+
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
-
-const novels = [
-  {
-    title: "Nany and the alpha daddy",
-    image: novelImage,
-    desc: "  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, ipsum dolor sit, amet consectetur perferendis.",
-  },
-  {
-    title: "Nany and the alpha daddy",
-    image: novelImage,
-    desc: "  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, ipsum dolor sit, amet consectetur perferendis.",
-  },
-  {
-    title: "Nany and the alpha daddy",
-    image: novelImage,
-    desc: "  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, ipsum dolor sit, amet consectetur perferendis.",
-  },
-];
+import { useEffect, useState } from "react";
+import MyBlogs from "@/components/MyBlogs";
 
 const page = () => {
-
-
+  const [blogs, setBlogs] = useState([]);
   const { data: session } = useSession();
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const res = await fetch(`/api/users/${session?.user.id}/blogs`);
+
+      const data = await res.json();
+      setBlogs(data);
+    };
+
+    if (session?.user.id) fetchBlogs();
+  }, [session?.user.id]);
 
   // if (!session?.user) {
   //   return router?.push("/dashboard/login");
   // }
 
+  const handleEdit = async (blog) => {
+    router.push(`/dashboard/update?id=${blog._id}`);
+  };
 
+  const handleDelete = async (blog) => {
+    const hasConfirmed = confirm(
+      "Are you sure you want to delete this article?"
+    );
+
+    if (hasConfirmed) {
+      try {
+        await fetch(`/api/blogs/${blog._id.toString()}`, {
+          method: "DELETE",
+        });
+
+        const filteredBlogs = blogs.filter((b) => b._id !== blog._id);
+
+        setBlogs(filteredBlogs);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <section className="w-full min-h-[70vh] py-10">
@@ -53,38 +67,15 @@ const page = () => {
           <Button text={"Create New Blog"} url={"/dashboard/new"} />
         </div>
       </div>
-      <div className="w-5/6 mx-auto flex flex-col gap-10 justify-evenly lg:justify-start  md:gap-6 lg:gap-9 flex-wrap md:flex-row ">
+      <div>
         {/* created articles */}
-
-        {novels.map((novel, i) => (
-          <div
-            className="flex flex-col w-full bg-[#EEEEEE] md:w-[300px] lg:w-[350px] rounded-md cursor-pointer  gap-2"
-            key={i}
-          >
-            <div className="h-[200px] md:h-[150px] lg:h-[200px] ">
-              <Image
-                src={novel.image}
-                className="w-full h-full object-cover rounded-t-md"
-                alt="novel image"
-              />
-            </div>
-            <div className="w-[90%] mx-auto  flex flex-col justify-between gap-3  py-2">
-              <p className="mb-2 font-semibold tracking-wider text-sm ">
-                {novel.title}
-              </p>
-              <p className="text-sm text-justify">{novel.desc}</p>
-
-              <div className="flex items-center px-2 py-1 justify-around md:justify-between">
-                <div className="">
-                  <p>Edit</p>
-                </div>
-                <div>
-                  <p>Delete</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+        {blogs && (
+          <MyBlogs
+            data={blogs}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
+        )}
       </div>
     </section>
   );
