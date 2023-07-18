@@ -8,15 +8,22 @@ import MyBlogs from "@/components/MyBlogs";
 
 const page = () => {
   const [blogs, setBlogs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const res = await fetch(`/api/users/${session?.user.id}/blogs`);
+      setIsLoading(true);
+      try {
+        const res = await fetch(`/api/users/${session?.user.id}/blogs`);
 
-      const data = await res.json();
-      setBlogs(data);
+        const data = await res.json();
+        setBlogs(data);
+      } catch (error) {
+        console.log(error);
+      }
+      setIsLoading(false);
     };
 
     if (session?.user.id) fetchBlogs();
@@ -67,16 +74,28 @@ const page = () => {
           <Button text={"Create New Blog"} url={"/dashboard/new"} />
         </div>
       </div>
-      <div>
-        {/* created articles */}
-        {blogs && (
-          <MyBlogs
-            data={blogs}
-            handleDelete={handleDelete}
-            handleEdit={handleEdit}
-          />
-        )}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center">
+          <p>Loading...</p>
+        </div>
+      ) : (
+        <div>
+          {/* created articles */}
+          {blogs.length === 0 ? (
+            <div className="w-5/6 mx-auto flex  items-center justify-center rounded-md bg-gray-200 p-4">
+              <p className="text-sm md:text-base lg:text-lg  my-2 tracking-wider">
+                You do not have articles at the moment...Click the button above to create new articles
+              </p>
+            </div>
+          ) : (
+            <MyBlogs
+              data={blogs}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+            />
+          )}
+        </div>
+      )}
     </section>
   );
 };
