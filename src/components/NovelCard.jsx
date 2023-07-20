@@ -1,13 +1,13 @@
-"use client"
+"use client";
 import Image from "next/image";
-import React, { useState } from "react";
-import Modal from "./Modal";
+import { useRouter } from "next/navigation";
 
 const NovelCard = ({ data }) => {
+  const router = useRouter();
 
-const [selectedBook, setSelectedBook] = useState()
-
-console.log(selectedBook);
+  const handleNovelClick = (id) => {
+    router.push(`/novels/${id}`);
+  };
 
   return (
     <div className="w-5/6 md:w-[94%] lg:w-[87%] mx-auto py-4 grid md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-10">
@@ -30,6 +30,7 @@ console.log(selectedBook);
             <div
               className="flex w-full my-2 md:my-0 border md:w-[350px] hover:bg-gray-200 hover:transform hover:scale-105 rounded-md  h-[230px]  gap-6"
               key={i}
+              onClick={() => handleNovelClick(item.id)}
             >
               <div className="w-[45%] md:w-[52%]">
                 <Image
@@ -40,11 +41,7 @@ console.log(selectedBook);
                   alt="novel image"
                 />
               </div>
-              <div
-                className="w-[55%] md:w-[60%]  flex flex-col cursor-pointer items-center  justify-around gap-2 py-2"
-                onClick={() => setSelectedBook(item)}
-               
-              >
+              <div className="w-[55%] md:w-[60%]  flex flex-col cursor-pointer items-center  justify-around gap-2 py-2">
                 <p className="mb-3 font-semibold tracking-wider text-sm md:text-base">
                   {shortTitle}
                 </p>
@@ -60,8 +57,6 @@ console.log(selectedBook);
           );
         }
       })}
-
-      {/* <Modal/> */}
     </div>
   );
 };
