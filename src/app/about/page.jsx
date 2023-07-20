@@ -40,10 +40,10 @@ const page = () => {
             What we do
           </h1>
           <p className="text-sm leading-[30px]">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo dolor
-            repellendus pariatur! Eos, eum, quo itaque labore assumenda deleniti
-            magni vitae placeat eligendi corrupti sunt ipsum nihil eius
-            voluptatem. Accusamus?
+            C-tech is a premier tech company specializing in UX design, web development,
+            and mobile app development. We create innovative solutions to
+            enhance user experiences and build high-quality websites and mobile
+            applications.
           </p>
         </div>
       </div>

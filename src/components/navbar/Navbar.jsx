@@ -6,6 +6,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { TbLetterX } from "react-icons/tb";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 
 const links = [
   { id: 1, title: "Home", url: "/" },
@@ -20,12 +21,26 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
 
   const { data: session } = useSession();
+ 
+  const router = useRouter();
+
+    const activeLink = usePathname();
+
+    
+
+
+  const handleSignOut = () => {
+    signOut()
+    router?.push("/dashboard/login");
+  };
+
+
 
   const handleMenuClick = () => {
     setToggleMenu((prev) => !prev);
   };
 
-  let userProfile = session?.user.name.charAt(0).toUpperCase();
+  let userProfile = session?.user.email.charAt(0).toUpperCase();
 
   return (
     <section className="w-full">
@@ -56,14 +71,22 @@ const Navbar = () => {
 
         <div className="hidden lg:flex gap-7 items-center">
           {links.map((link) => (
-            <Link key={link.id} href={link.url} className="text-sm">
+            <Link
+              key={link.id}
+              href={link.url}
+              className={`${
+                activeLink === link.url
+                  ? "border-b-[3px] border-primary-100"
+                  : ""
+              } text-sm`}
+            >
               {link.title}
             </Link>
           ))}
 
           {session?.user ? (
             <button
-              onClick={signOut}
+              onClick={handleSignOut}
               className="px-3.5 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
             >
               Sign Out
@@ -101,7 +124,11 @@ const Navbar = () => {
                     key={link.id}
                     href={link.url}
                     onClick={() => setToggleMenu((prev) => !prev)}
-                    className="my-3"
+                    className={`${
+                      activeLink === link.url
+                        ? "border-b-[3px] border-primary-100"
+                        : ""
+                    } text-sm my-3`}
                   >
                     {link.title}
                   </Link>
@@ -111,6 +138,7 @@ const Navbar = () => {
                   <button
                     className="px-3.5 mt-3 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
                     onClick={signOut}
+                    onClick={() => setToggleMenu((prev) => !prev)}
                   >
                     Sign Out
                   </button>
@@ -120,6 +148,7 @@ const Navbar = () => {
                       type="button"
                       className="px-3.5 mt-3 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
                       href="/dashboard/login"
+                      onClick={() => setToggleMenu((prev) => !prev)}
                     >
                       Sign In
                     </Link>

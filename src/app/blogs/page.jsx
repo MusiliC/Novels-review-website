@@ -38,7 +38,6 @@ const page = () => {
     );
   };
 
-
   useEffect(() => {
     const fetchBlogs = async () => {
       setIsLoading(true);
@@ -58,6 +57,7 @@ const page = () => {
     <section className="w-full pt-5 md:min-h-[70vh] pb-16">
       <div className="w-5/6 mx-auto pb-10">
         <Search
+          placeholder={"Search for tags, username or context"}
           searchText={searchText}
           setSearchText={setSearchText}
           handleSearchChange={handleSearchChange}
@@ -73,7 +73,7 @@ const page = () => {
           {searchText && searchText ? (
             <BlogCardList data={searchedResults} />
           ) : (
-            <BlogCardList data={blogs}  />
+            <BlogCardList data={blogs} />
           )}
         </>
       )}

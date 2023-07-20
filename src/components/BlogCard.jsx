@@ -2,10 +2,22 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import benCarson from "public/2.jpg";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const BlogCard = ({ blog, handleTagClick }) => {
+  const router = useRouter();
+   const { data: session } = useSession();
+
+   
+
+  const handleProfileClick = () => {
+    if (blog.creator._id === session?.user.id) return router.push("/dashboard");
+    router.push(`/dashboard/${blog.creator._id}?name=${blog.creator.username}`);
+  };
+
   return (
-    <div className="flex flex-col md:flex-row md:items-center gap-4 border-t border-b cursor-pointer  py-5 border-gray-300 md:gap-[30px] lg:gap-[70px]">
+    <div className="flex flex-col md:flex-row md:items-center gap-4 border-t border-b  py-5 border-gray-300 md:gap-[30px] lg:gap-[70px]">
       <div className="md:w-[40%] px-2 lg:w-[30%] flex justify-center">
         <Image
           src={blog.image ? blog.image : benCarson}
@@ -17,9 +29,13 @@ const BlogCard = ({ blog, handleTagClick }) => {
       {/* item 2 */}
 
       <div className="flex md:w-[55%] lg:w-[65%] flex-col">
-        <div className="flex my-3 justify-between gap-5 md:gap-2 flex-col md:flex-row  md:items-center">
+        <div className="flex my-3 justify-between gap-7 md:gap-2 flex-col md:flex-row  md:items-center">
           {/* username */}
-          <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
+
+          <div
+            className="flex-1 flex justify-start items-center gap-3 hover:bg-gray-200  cursor-pointer"
+            onClick={handleProfileClick}
+          >
             <Image
               src={blog.creator?.image}
               alt="user_image"
@@ -42,9 +58,11 @@ const BlogCard = ({ blog, handleTagClick }) => {
 
           {/* read more button */}
 
-          <div>
+          <div className="flex-1  mb-3 md:mb-0  md:flex md:justify-end">
             <Link href={`/blogs/${blog._id}`}>
-              <p className="text-blue-700 tracking-widest text-sm font-semibold underline">Read more</p>
+              <p className="text-blue-700 tracking-widest text-sm font-semibold underline">
+                Read more
+              </p>
             </Link>
           </div>
         </div>

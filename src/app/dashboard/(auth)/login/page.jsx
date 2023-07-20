@@ -30,8 +30,14 @@ const page = () => {
   return (
     <section className="min-h-[70vh] lg:py-12  flex flex-col items-center justify-center">
       <div className="p-10 border w-[90%] md:w-[450px] border-gray-200">
+        <div className="my-4 flex items-center gap-5 justify-center">
+          <div className="border border-gray-300 w-[50px]" />
+          <p className="text-center text-sm">Sign in with google</p>
+          <div className="border border-gray-300 w-[50px]" />
+        </div>
+
         <div
-          className="p-3 flex w-full items-center justify-center border cursor-pointer  border-gray-400 rounded-md"
+          className="p-3 flex mt-7 w-full items-center justify-center border cursor-pointer  border-gray-400 rounded-md"
           onClick={() => signIn("google")}
         >
           <p className="text-lg flex justify-center items-center gap-2">
@@ -39,13 +45,13 @@ const page = () => {
           </p>
         </div>
 
-        <div className="my-4 flex items-center gap-5 justify-center">
-          <div className="border border-gray-300 w-[50px]" />
-          <p className="text-center text-sm">Or with email and password</p>
-          <div className="border border-gray-300 w-[50px]" />
+        <div className="mb-3 mt-7 flex items-center  justify-center">
+          <p className="text-sm italic">
+            Soon I will be adding form to sign in with email and password😊{" "}
+          </p>
         </div>
 
-        <form
+        {/* <form
           action=""
           className="flex flex-col w-full gap-5"
           onSubmit={handleSubmit}
@@ -77,7 +83,7 @@ const page = () => {
               Sign up
             </Link>{" "}
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

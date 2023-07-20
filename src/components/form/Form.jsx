@@ -1,15 +1,20 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const Form = ({ type,book, setBook,image, submitting, handleSubmit }) => {
+
+  
+
   return (
     <form action="" onSubmit={handleSubmit} className="flex flex-col gap-4">
       <label htmlFor="">
         <span className="text-sm">Book Image cover picture</span>
         <input
           type="file"
-          className="p-3 text-sm outline-none w-full bg-transparent border border-primary-100 rounded-md"
+          accept="image/*"
+          onChange={(e) => setBook({...book, image: e.target.files[0]})}
+          className="p-2.5 text-sm outline-none w-full bg-transparent border border-primary-100 rounded-md"
         />
       </label>
       <input

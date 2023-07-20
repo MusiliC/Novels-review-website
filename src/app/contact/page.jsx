@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import contact from "public/contactNovel.svg";
+import contact from "public/notification.svg";
 import Button from "@/components/button/Button";
 
 const page = () => {

@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
 
-const Search = ({ searchText,  handleSearchChange }) => {
+const Search = ({placeholder, searchText,  handleSearchChange }) => {
   return (
     <section className="w-full">
       <div className="md:w-[60%] lg:w-[40%]  mx-auto">
         <form action="" className="w-full">
           <input
             type="text"
-            placeholder="search for tag or blog title"
+            placeholder={placeholder}
             value={searchText}
             onChange={handleSearchChange}
             required

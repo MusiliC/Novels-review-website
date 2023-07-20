@@ -11,35 +11,35 @@ const handler = NextAuth({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
-    // CredentialsProvider({
-    //   id: "credentials",
-    //   name: "Credentials",
+    CredentialsProvider({
+      id: "credentials",
+      name: "Credentials",
 
-    //   async authorize(credentials) {
-    //     await connectToDB();
+      async authorize(credentials) {
+        await connectToDB();
 
-    //     //check if user already exist
+        //check if user already exist
 
-    //     const userExists = await User.findOne({ email: credentials.email });
+        const userExists = await User.findOne({ email: credentials.email });
 
-    //     if (userExists) {
-    //       //check password
+        if (userExists) {
+          //check password
 
-    //       const isPasswordCorrect = await bcrypt.compare(
-    //         credentials.password,
-    //         userExists.password
-    //       );
+          const isPasswordCorrect = await bcrypt.compare(
+            credentials.password,
+            userExists.password
+          );
 
-    //       if (isPasswordCorrect) {
-    //         return userExists;
-    //       } else {
-    //         throw new Error("Incorrect credentials");
-    //       }
-    //     } else {
-    //       throw new Error("User not found");
-    //     }
-    //   },
-    // }),
+          if (isPasswordCorrect) {
+            return userExists;
+          } else {
+            throw new Error("Incorrect credentials");
+          }
+        } else {
+          throw new Error("User not found");
+        }
+      },
+    }),
   ],
   callbacks: {
     async session({ session }) {
