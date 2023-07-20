@@ -12,7 +12,7 @@ const page = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [books, setBooks] = useState([]);
 
-  const key = "AIzaSyDsuwneXJvZ8636PKUQSwb6_sFY1pHSZq4";
+  const key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
   const searchBook = async (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const page = () => {
   };
 
   const fetchBooks = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
       const response = await axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=Harry%20Potter&maxResults=10&orderBy=newest&key=${key}`
@@ -40,8 +40,8 @@ const page = () => {
       setBooks(response.data.items);
     } catch (error) {
       console.error("Error fetching books:", error);
-    }finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,7 +49,6 @@ const page = () => {
     fetchBooks();
   }, []);
 
-  
   return (
     <section className="w-full pt-2 pb-16">
       <div className=" relative w-full  bg-gradient-to-br from-primary-100 to-[#3C2A21]  h-[300px]">

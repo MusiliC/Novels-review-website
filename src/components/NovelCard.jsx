@@ -61,7 +61,7 @@ console.log(selectedBook);
         }
       })}
 
-      <Modal/>
+      {/* <Modal/> */}
     </div>
   );
 };

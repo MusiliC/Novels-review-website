@@ -19,13 +19,13 @@ const Modal = () => {
             {/* image */}
             <div className="flex-1">iamge</div>
             <div className="flex-1 flex flex-col gap-5">
-              <h1 className="text-xl md:text-3xl font-semibold tracking-widest">
+              <h1 className="text-lg md:text-3xl font-semibold tracking-widest">
                 Title
               </h1>
-              <h3 className="text-lg md:text-2xl font-semibold tracking-wider">
+              <h3 className=" md:text-2xl font-semibold tracking-wider">
                 Author
               </h3>
-              <h4 className="text-base md:text-xl font-semibold tracking-wide">
+              <h4 className="text-sm md:text-xl font-semibold tracking-wide">
                 Publisher
               </h4>
             </div>
@@ -34,7 +34,7 @@ const Modal = () => {
           {/* title and desc */}
 
           <div className="w-[90%] py-2 mx-auto">
-            <h2 className="">Description</h2>
+            <h2 className="text-sm md:text-base">Description</h2>
             <p className="text-sm my-3">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita
               iure obcaecati laborum dolore quae aliquam perferendis nisi
