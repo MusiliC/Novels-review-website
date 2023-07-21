@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import benCarson from "public/2.jpg";
+import benCarson from "public/12.jpg";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -15,6 +15,9 @@ const BlogCard = ({ blog, handleTagClick }) => {
     if (blog.creator._id === session?.user.id) return router.push("/dashboard");
     router.push(`/dashboard/${blog.creator._id}?name=${blog.creator.username}`);
   };
+
+   let blogDescription = blog.information.trim().split(/\s+/);
+   const shortDescription = blogDescription.slice(0, 10).join(" ");
 
   return (
     <div className="flex flex-col md:flex-row md:items-center gap-4 border-t border-b  py-5 border-gray-300 md:gap-[30px] lg:gap-[70px]">
@@ -71,7 +74,7 @@ const BlogCard = ({ blog, handleTagClick }) => {
           <p className="font-semibold tracking-wider">{blog.title}</p>
         </div>
         <div className=" mb-2">
-          <p className="text-sm">{blog.information}</p>
+          <p className="text-sm">{shortDescription} <span className="font-semibold">.....</span> </p>
         </div>
         <div className="">
           <p

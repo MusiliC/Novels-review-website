@@ -2,21 +2,13 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-const Form = ({ type,book, setBook,image, submitting, handleSubmit }) => {
+const Form = ({ type,book, setBook, submitting, handleSubmit }) => {
 
   
 
   return (
-    <form action="" onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <label htmlFor="">
-        <span className="text-sm">Book Image cover picture</span>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setBook({...book, image: e.target.files[0]})}
-          className="p-2.5 text-sm outline-none w-full bg-transparent border border-primary-100 rounded-md"
-        />
-      </label>
+    <form action="" onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
+    
       <input
         type="text"
         placeholder="Book title"

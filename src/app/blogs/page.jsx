@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Search from "@/components/search/Search";
-import BlogCard from "@/components/BlogCard";
+
 import BlogCardList from "@/components/BlogCardList";
 
 const page = () => {

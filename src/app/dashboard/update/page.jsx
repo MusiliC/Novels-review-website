@@ -77,7 +77,7 @@ const page = () => {
         {/* form */}
 
         <div className="w-full items-center lg:py-4 justify-between flex flex-col-reverse lg:flex-row gap-5">
-          <div className="flex-1">
+          <div className="flex-1 w-full">
             <Form
               type={"Update"}
               book={book}

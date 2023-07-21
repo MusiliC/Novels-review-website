@@ -12,7 +12,7 @@ const page = () => {
 
   const key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
-  //https://www.googleapis.com/books/v1/volumes?id=yzFYEAAAQBAJ&key=AIzaSyDsuwneXJvZ8636PKUQSwb6_sFY1pHSZq4
+
 
   const searchBook = async (e) => {
     e.preventDefault();

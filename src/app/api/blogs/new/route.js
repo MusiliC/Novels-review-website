@@ -1,9 +1,8 @@
 import Book from "@/models/book";
 import { connectToDB } from "@/utilis/database";
 
-
 export const POST = async (req, res) => {
-  const { userId, title, image, information, tags } = await req.json();
+  const { userId, title,  information, tags } = await req.json();
 
   try {
     await connectToDB();
@@ -11,7 +10,6 @@ export const POST = async (req, res) => {
     const newBook = new Book({
       creator: userId,
       title,
-      image,
       information,
       tags,
     });
@@ -22,8 +20,8 @@ export const POST = async (req, res) => {
       status: 201,
     });
   } catch (error) {
-      return new Response("Failed to create new blog", {
-        status: 500,
-      });
+    return new Response("Failed to create new blog", {
+      status: 500,
+    });
   }
 };

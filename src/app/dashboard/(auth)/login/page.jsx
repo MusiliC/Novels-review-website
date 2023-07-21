@@ -30,6 +30,9 @@ const page = () => {
   return (
     <section className="min-h-[70vh] lg:py-12  flex flex-col items-center justify-center">
       <div className="p-10 border w-[90%] md:w-[450px] border-gray-200">
+        <div className="flex items-center justify-center">
+          <p className="text-lg tracking-widest font-semibold">BookReview App</p>
+        </div>
         <div className="my-4 flex items-center gap-5 justify-center">
           <div className="border border-gray-300 w-[50px]" />
           <p className="text-center text-sm">Sign in with google</p>

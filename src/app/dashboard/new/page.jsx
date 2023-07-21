@@ -14,7 +14,6 @@ const page = () => {
     title: "",
     information: "",
     tags: "",
-    image: "",
   });
 
   const router = useRouter();
@@ -22,38 +21,27 @@ const page = () => {
   const createBook = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-   
-    formData.append("userId", session?.user.id);
-    formData.append("title", book?.title);
-    formData.append("information", book.information);
-    formData.append("tags", book.tags);
-    formData.append("image", book.image);
+    setSubmitting(true);
 
-    console.log(formData);
+    try {
+      const response = await fetch("/api/blogs/new", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user.id,
+          title: book.title,
+          information: book.information,
+          tags: book.tags,
+        }),
+      });
 
-    // setSubmitting(true);
-
-    // try {
-    //   const response = await fetch("/api/blogs/new", {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       userId: session?.user.id,
-    //       title: book.title,
-    //       information: book.information,
-    //       tags: book.tags,
-    //       image: book.image,
-    //     }),
-    //   });
-
-    //   if (response.ok) {
-    //     router.push("/dashboard");
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // } finally {
-    //   setSubmitting(false);
-    // }
+      if (response.ok) {
+        router.push("/dashboard");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmitting(false);
+    }
   };
   return (
     <section className="w-full min-h-[70vh] py-10">
@@ -69,8 +57,8 @@ const page = () => {
 
         {/* form */}
 
-        <div className="w-full items-center lg:py-4 justify-between flex flex-col-reverse lg:flex-row gap-5">
-          <div className="flex-1">
+        <div className="w-full  items-center lg:py-4 justify-between flex flex-col-reverse lg:flex-row gap-5">
+          <div className="lg:flex-1 w-full">
             <Form
               type={"Create"}
               book={book}

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import benCarson from "public/2.jpg";
+import benCarson from "public/9.jpg";
 import Button from "@/components/button/Button";
 import aboutImage from "/public/3.jpg";
 
@@ -42,6 +42,7 @@ const page = () => {
     if (id) getBlogDetails();
   }, [id]);
 
+
   return (
     <section className="w-full md:min-h-[70vh]">
       <div className=" relative w-full mb-3 lg:mb-5 bg-gradient-to-br from-primary-100 to-[#3C2A21]  h-[250px]">
@@ -55,7 +56,6 @@ const page = () => {
           <p className="text-lg md:text-2xl lg:text-3xl text-white font-semibold tracking-widest">
             Explore Novels and Books
           </p>
-         
         </div>
       </div>
       {isLoading ? (
@@ -63,7 +63,7 @@ const page = () => {
           <p>Loading...</p>
         </div>
       ) : (
-        <div className="w-5/6  mx-auto py-14 md:py-8 md:pb-14">
+        <div className="w-5/6 lg:w-4/6  mx-auto py-14 md:py-8 md:pb-14">
           {/* top section */}
 
           <div className="">
@@ -86,7 +86,7 @@ const page = () => {
           {/* bottom section */}
           {/* blog info */}
           <div className="">
-            <p className="text-sm leading-[18px]">{book?.information}</p>
+            <p className="text-sm text-justify leading-[18px]">{book?.information}</p>
           </div>
 
           <div className="mt-8">

@@ -16,9 +16,6 @@ const BookSchema = new Schema({
   tags: {
     type: String,
   },
-  image: {
-    type: String,
-  },
 });
 
 const Book = models.Book || model("Book", BookSchema);
