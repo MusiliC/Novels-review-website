@@ -12,8 +12,6 @@ const Novels = () => {
 
   const key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
-
-
   const searchBook = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -31,23 +29,22 @@ const Novels = () => {
     }
   };
 
-  const fetchBooks = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=Harry%20Potter&maxResults=10&orderBy=newest&key=${key}`
-      );
-      setBooks(response.data.items);
-    } catch (error) {
-      console.error("Error fetching books:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchBooks = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `https://www.googleapis.com/books/v1/volumes?q=Harry%20Potter&maxResults=10&orderBy=newest&key=${key}`
+        );
+        setBooks(response.data.items);
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchBooks();
-  }, []);
+  }, [key]);
 
   return (
     <section className="w-full ">

@@ -31,7 +31,7 @@ const OneNovel = () => {
       }
     };
     fetchBooks();
-  }, [id]);
+  }, [id, key]);
 
   const thumbnail = selectedNovel?.volumeInfo.imageLinks.smallThumbnail;
 
