@@ -4,20 +4,24 @@ import Image from "next/image";
 import benCarson from "public/12.jpg";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import DOMPurify from "dompurify";
+import DisplayContent from "./DisplayContent";
 
 const BlogCard = ({ blog, handleTagClick }) => {
   const router = useRouter();
-   const { data: session } = useSession();
-
-   
+  const { data: session } = useSession();
 
   const handleProfileClick = () => {
     if (blog.creator._id === session?.user.id) return router.push("/dashboard");
     router.push(`/dashboard/${blog.creator._id}?name=${blog.creator.username}`);
   };
 
-   let blogDescription = blog.information.trim().split(/\s+/);
-   const shortDescription = blogDescription.slice(0, 10).join(" ");
+  let blogDescription = blog.information.trim().split(/\s+/);
+  const shortDescription = blogDescription.slice(0, 10).join(" ");
+
+  const sanitizedContent = DOMPurify.sanitize(shortDescription, {
+    USE_PROFILES: { html: true },
+  });
 
   return (
     <div className="flex flex-col md:flex-row md:items-center gap-4 border-t border-b  py-5 border-gray-300 md:gap-[30px] lg:gap-[70px]">
@@ -74,7 +78,10 @@ const BlogCard = ({ blog, handleTagClick }) => {
           <p className="font-semibold tracking-wider">{blog.title}</p>
         </div>
         <div className=" mb-2">
-          <p className="text-sm">{shortDescription} <span className="font-semibold">.....</span> </p>
+          <div className="text-sm flex">
+            <DisplayContent htmlContent={sanitizedContent} />
+            <span className="font-semibold tracking-wider">.....</span>
+          </div>
         </div>
         <div className="">
           <p

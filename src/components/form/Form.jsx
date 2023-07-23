@@ -1,14 +1,20 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
+import TextEditor from "../edtitor/Editor";
 
-const Form = ({ type,book, setBook, submitting, handleSubmit }) => {
+const Form = ({ type, book, setBook, submitting, handleSubmit }) => {
 
-  
+  const handleEditorChange = (value) => {
+    setBook({ ...book, information: value });
+  };
 
   return (
-    <form action="" onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
-    
+    <form
+      action=""
+      onSubmit={handleSubmit}
+      className="flex w-full flex-col gap-4"
+    >
       <input
         type="text"
         placeholder="Book title"
@@ -16,16 +22,16 @@ const Form = ({ type,book, setBook, submitting, handleSubmit }) => {
         onChange={(e) => setBook({ ...book, title: e.target.value })}
         className="p-2.5 outline-none text-sm bg-transparent border border-primary-100 rounded-md"
       />
-      <textarea
-        name=""
+      <label htmlFor="" className="text-sm">
+        Book article information
+      </label>
+      <TextEditor
+        
         value={book.information}
-        onChange={(e) => setBook({ ...book, information: e.target.value })}
-        placeholder="Book article information "
-        id=""
-        cols="30"
-        rows="5"
-        className="p-2.5 text-sm outline-none bg-transparent border border-primary-100 rounded-md"
-      ></textarea>
+        onChange={handleEditorChange}
+      />
+   
+
       <input
         type="text"
         onChange={(e) => setBook({ ...book, tags: e.target.value })}

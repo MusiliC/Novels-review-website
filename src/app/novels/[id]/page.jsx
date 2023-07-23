@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
+import DOMPurify from "dompurify";
+import DisplayContent from "@/components/DisplayContent";
 
 const page = () => {
   const [loading, setLoading] = useState(false);
@@ -34,6 +36,13 @@ const page = () => {
 
   const thumbnail = selectedNovel?.volumeInfo.imageLinks.smallThumbnail;
 
+  const sanitizedContent = DOMPurify.sanitize(
+    selectedNovel?.volumeInfo.description,
+    {
+      USE_PROFILES: { html: true },
+    }
+  );
+
   return (
     <section>
       <div className="w-5/6 mx-auto flex pt-10 pb-4 justify-center items-center  ">
@@ -45,7 +54,9 @@ const page = () => {
           <div className="w-full">
             <div className="flex md:w-[90%] mx-auto justify-between  items-center py-2 border-b-2">
               <div>
-                <p>Book Description</p>
+                <p className=" md:text-lg font-semibold tracking-widest">
+                  Book Description
+                </p>
               </div>
             </div>
 
@@ -76,10 +87,12 @@ const page = () => {
             {/* title and desc */}
 
             <div className="md:w-[90%] pt-2  mx-auto">
-              <h2 className="text-sm  md:text-base">Description</h2>
-              <p className="text-sm my-3">
-                {selectedNovel?.volumeInfo.description}
-              </p>
+              <h2 className=" md:text-lg font-semibold tracking-widest">
+                Description
+              </h2>
+              <div className="text-sm my-3">
+                <DisplayContent htmlContent={sanitizedContent} />
+              </div>
 
               {/*  */}
               <div className="mt-10">

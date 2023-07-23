@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import benCarson from "public/9.jpg";
 import Button from "@/components/button/Button";
 import aboutImage from "/public/3.jpg";
+import DOMPurify from "dompurify";
+import DisplayContent from "@/components/DisplayContent";
 
 const page = () => {
   const { id } = useParams();
@@ -42,6 +44,9 @@ const page = () => {
     if (id) getBlogDetails();
   }, [id]);
 
+  const sanitizedContent = DOMPurify.sanitize(book?.information, {
+    USE_PROFILES: { html: true },
+  });
 
   return (
     <section className="w-full md:min-h-[70vh]">
@@ -86,7 +91,9 @@ const page = () => {
           {/* bottom section */}
           {/* blog info */}
           <div className="">
-            <p className="text-sm text-justify leading-[18px]">{book?.information}</p>
+            <div className="text-sm text-justify leading-[18px]">
+              <DisplayContent htmlContent={sanitizedContent} />
+            </div>
           </div>
 
           <div className="mt-8">

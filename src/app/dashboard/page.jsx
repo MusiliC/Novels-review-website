@@ -91,7 +91,7 @@ const page = () => {
                   <p className="text-sm md:text-base lg:text-lg leading-[30px] my-2 tracking-wider">
                     You are not signed in! Create Account or sign in to access
                     your dashboard
-                    <span className="underline mx-3 text-blue-600   font-semibold cursor-pointer">
+                    <span className="underline mx-3 text-blue-800  font-semibold tracking-widest cursor-pointer">
                       <Link href="/dashboard/login">
                         {" "}
                         Click here to Sign In
