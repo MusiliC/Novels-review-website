@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import aboutImage from "/public/3.jpg";
 
-const Page = () => {
+const About = () => {
   return (
     <section className="w-full md:min-h-[70vh]">
       {/* upper section */}
@@ -40,10 +40,10 @@ const Page = () => {
             What we do
           </h1>
           <p className="text-sm leading-[30px]">
-            C-tech is a premier tech company specializing in UX design, web development,
-            and mobile app development. We create innovative solutions to
-            enhance user experiences and build high-quality websites and mobile
-            applications.
+            C-tech is a premier tech company specializing in UX design, web
+            development, and mobile app development. We create innovative
+            solutions to enhance user experiences and build high-quality
+            websites and mobile applications.
           </p>
         </div>
       </div>
@@ -51,4 +51,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default About;

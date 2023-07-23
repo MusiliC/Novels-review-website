@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import MyBlogs from "@/components/MyBlogs";
 import Link from "next/link";
 
-const Page = () => {
+const MyArticles = () => {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
@@ -119,4 +119,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default MyArticles;

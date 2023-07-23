@@ -3,7 +3,7 @@ import React from "react";
 import contact from "public/notification.svg";
 import Button from "@/components/button/Button";
 
-const Page = () => {
+const Contact = () => {
   return (
     <section className="w-full md:min-h-[70vh] py-10 md:py-20">
       <div className="w-5/6 mx-auto gap-10 md:gap-20 flex flex-col md:flex-row items-center">
@@ -41,4 +41,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Contact;

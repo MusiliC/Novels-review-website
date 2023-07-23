@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-const Page = () => {
+const Login = () => {
   const session = useSession();
   const router = useRouter();
 
@@ -98,4 +98,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Login;

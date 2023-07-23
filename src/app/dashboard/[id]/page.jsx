@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import BlogCardList from "@/components/BlogCardList";
 import { useSearchParams, useParams } from "next/navigation";
 
-const Page = () => {
+const UserArticles = () => {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,10 +32,10 @@ const Page = () => {
       <div className="lg:w-4/6 w-5/6 mx-auto pb-10">
         <div>
           <h1 className="text-2xl md:text-4xl  tracking-widest font-bold">
-            {userName}'s Blogs
+            {` ${userName}'s Blogs`}
           </h1>
           <h3 className="md:text-lg font-[550]  my-2 text-wider ">
-            Welcome to {userName}'s personalized blogs Page
+            {`Welcome to ${userName}'s personalized blogs Page`}
           </h3>
         </div>
       </div>
@@ -53,4 +53,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default UserArticles;

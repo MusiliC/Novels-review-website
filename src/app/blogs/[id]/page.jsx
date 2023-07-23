@@ -8,7 +8,7 @@ import aboutImage from "/public/3.jpg";
 import DOMPurify from "dompurify";
 import DisplayContent from "@/components/DisplayContent";
 
-const Page = () => {
+const OneBlog = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -105,4 +105,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default OneBlog;

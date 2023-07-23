@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
-const Page = () => {
+const Register = () => {
 
   const [err, setErr] = useState(false)
   const router = useRouter()
@@ -87,4 +87,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Register;

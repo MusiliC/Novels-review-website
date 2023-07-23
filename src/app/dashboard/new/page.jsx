@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const Page = () => {
+const NewArticle = () => {
   const { data: session } = useSession();
 
   const [submitting, setSubmitting] = useState(false);
@@ -81,4 +81,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default NewArticle;

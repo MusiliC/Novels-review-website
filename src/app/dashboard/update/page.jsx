@@ -5,7 +5,7 @@ import contact from "public/noteBook.svg";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 
-const Page = () => {
+const UpdateArticle = () => {
   const [submitting, setSubmitting] = useState(false);
   const [book, setBook] = useState({
     title: "",
@@ -100,4 +100,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default UpdateArticle;

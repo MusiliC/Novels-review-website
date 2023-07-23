@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NovelCard from "@/components/NovelCard";
 
-const Page = () => {
+const Novels = () => {
   const [searchText, setSearchText] = useState("");
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -92,4 +92,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Novels;
