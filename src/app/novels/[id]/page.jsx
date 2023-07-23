@@ -15,24 +15,23 @@ const OneNovel = () => {
 
   const key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
-  const fetchBooks = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes/${id}?key=${key}`
-      );
-
-      setSelectedNovel(response.data);
-    } catch (error) {
-      console.error("Error fetching books:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchBooks = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `https://www.googleapis.com/books/v1/volumes/${id}?key=${key}`
+        );
+
+        setSelectedNovel(response.data);
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchBooks();
-  }, [id]);
+  }, [id, key]);
 
   const thumbnail = selectedNovel?.volumeInfo.imageLinks.smallThumbnail;
 
