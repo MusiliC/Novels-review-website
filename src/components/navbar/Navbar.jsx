@@ -21,20 +21,21 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
 
   const { data: session } = useSession();
- 
+
   const router = useRouter();
 
-    const activeLink = usePathname();
-
-    
-
+  const activeLink = usePathname();
 
   const handleSignOut = () => {
-    signOut()
+    signOut();
     router?.push("/dashboard/login");
   };
 
-
+  const handleSignOutPhone = () => {
+    signOut();
+    setToggleMenu((prev) => !prev);
+    router?.push("/dashboard/login");
+  };
 
   const handleMenuClick = () => {
     setToggleMenu((prev) => !prev);
@@ -137,8 +138,7 @@ const Navbar = () => {
                 {session?.user ? (
                   <button
                     className="px-3.5 mt-3 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
-                    onClick={signOut}
-                    onClick={() => setToggleMenu((prev) => !prev)}
+                    onClick={handleSignOutPhone}
                   >
                     Sign Out
                   </button>
