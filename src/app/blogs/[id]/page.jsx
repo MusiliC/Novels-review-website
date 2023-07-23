@@ -8,7 +8,7 @@ import aboutImage from "/public/3.jpg";
 import DOMPurify from "dompurify";
 import DisplayContent from "@/components/DisplayContent";
 
-const page = () => {
+const Page = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -105,4 +105,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

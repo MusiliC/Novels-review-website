@@ -4,7 +4,7 @@ import Search from "@/components/search/Search";
 
 import BlogCardList from "@/components/BlogCardList";
 
-const page = () => {
+const Page = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
@@ -81,4 +81,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

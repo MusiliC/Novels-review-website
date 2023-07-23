@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 import DOMPurify from "dompurify";
 import DisplayContent from "@/components/DisplayContent";
 
-const page = () => {
+const Page = () => {
   const [loading, setLoading] = useState(false);
   const [selectedNovel, setSelectedNovel] = useState();
 
@@ -111,4 +111,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

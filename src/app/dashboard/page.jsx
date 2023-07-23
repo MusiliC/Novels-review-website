@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import MyBlogs from "@/components/MyBlogs";
 import Link from "next/link";
 
-const page = () => {
+const Page = () => {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
@@ -66,7 +66,7 @@ const page = () => {
             My Blogs
           </h1>
           <h3 className="md:text-lg lg:text-xl my-2 tracking-widest font-semibold">
-            Welcome to your personalized blogs page
+            Welcome to your personalized blogs Page
           </h3>
         </div>
 
@@ -119,4 +119,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

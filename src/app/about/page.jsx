@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import aboutImage from "/public/3.jpg";
 
-const page = () => {
+const Page = () => {
   return (
     <section className="w-full md:min-h-[70vh]">
       {/* upper section */}
@@ -51,4 +51,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
